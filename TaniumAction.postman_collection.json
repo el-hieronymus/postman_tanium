@@ -1,10 +1,8 @@
 {
 	"info": {
-		"_postman_id": "e5606a66-9c62-4aea-aa95-39b99748b51f",
-		"name": "Tanium - Action with Parameters ",
+		"name": "Tanium - Action",
 		"description": "Block incomming trafic from a IP address or range of addresses.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18340491"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
