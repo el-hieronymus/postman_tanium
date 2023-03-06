@@ -1,0 +1,438 @@
+{
+	"info": {
+		"_postman_id": "9d97c73e-d096-40a3-a98e-4cd2477d9449",
+		"name": "Test_TaniumServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18340491"
+	},
+	"item": [
+		{
+			"name": "get actions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tanium-options",
+						"value": "{\"json_pretty_print\":1,\"cache_filters\":[{\"field\":\"status\",\"value\":\"open\",\"operator\":\"RegexMatch\"}]}",
+						"type": "text"
+					},
+					{
+						"key": "tanium-options",
+						"value": "{\"json_pretty_print\":1,\"cache_filters\":[{\"field\":\"id\",\"value\":\"41*\",\"operator\":\"RegexMatch\"}]}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/actions",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"actions"
+					],
+					"query": [
+						{
+							"key": "/api/v2/actions",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_results_flow",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//console.log(\"Get_results_flow session_id: \" + pm.collectionVariables.get(\"session_id\"));",
+							"//console.log(\"Get_data.row.data: \" + pm.response.json().data.row.data);",
+							"//console.log(\"Get_results This is data.body.data.id: \" + pm.response.json().data.body.data.id);",
+							"//let response = pm.response.json().data.row.data;",
+							"//const jsonData = JSON.stringify(response);",
+							"//console.log(\"Get_results This is jsonData: \" + jsonData);",
+							"//pm.collectionVariables.set(\"reveal_filelist\", jsonData); ",
+							"//console.log(pm.collectionVariables.get(\"reveal_filelist\"));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"/*",
+							"pm.test(\"SQ is a My_function\", () => {",
+							"const responseJson = pm.response.json();",
+							"//  pm.expect(responseJson.data.name).to.eql(\"My netstat Linux\");",
+							"    pm.expect(responseJson.data.query_text).contains(\"MY_\");",
+							"});",
+							"*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v2/result_data/question?json_pretty_print=1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"result_data",
+						"question"
+					],
+					"query": [
+						{
+							"key": "json_pretty_print",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    ",
+							"    // Get the current Session-ID (questionID = SessionID):",
+							"    //console.log(\"TEST 0 - Check the active environment: \" + pm.environment.name);",
+							"    ",
+							"    //Initialize the Session-ID to \"666\":",
+							"    pm.collectionVariables.set(\"question_id\",\"666\"); // initialize \"question_id\"  ",
+							"    console.log(\"Get_Question: intial-question_id = \" + pm.collectionVariables.get(\"question_id\") );",
+							"    ",
+							"    //Call Response and get new Session-ID:",
+							"    //let jsonResponse = pm.response.json().data.id;",
+							"    //const jsonData = JSON.stringify(jsonResponse);",
+							"    const jsonData = JSON.stringify(pm.response.json().data.id);",
+							"    //console.log(\"JSON Response data.id = \" + jsonData)",
+							"    pm.collectionVariables.set(\"question_id\", jsonData);",
+							"    //console.log(\"new question_id = \" + pm.collectionVariables.get(\"question_id\")); //print new question_id",
+							"  ",
+							"    console.log(\"JSON Response data.id = \" + jsonData",
+							"                + \"\\n new question_id = \" + pm.collectionVariables.get(\"question_id\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{json_payload}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}{{QUESTION_ENDPOINT}}?json_pretty_print=1",
+					"host": [
+						"{{BASE_URL}}{{QUESTION_ENDPOINT}}"
+					],
+					"query": [
+						{
+							"key": "json_pretty_print",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "parse_question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//console.log(pm.response.json().data[0]); b",
+							"let response = pm.response.json().data[0];",
+							"const jsonData = JSON.stringify(response);",
+							"//console.log(jsonData);",
+							"",
+							"pm.collectionVariables.set(\"json_payload\", jsonData); ",
+							"console.log(pm.collectionVariables.get(\"json_payload\"));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{questionJson}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}{{PARSE_QUESTION_ENDPOINT}}",
+					"host": [
+						"{{BASE_URL}}{{PARSE_QUESTION_ENDPOINT}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deploy_action",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "data = {\n    \"action_group\": {\"id\": {{ACTION_GROUP_ID}}},\n    \"name\":\"{{package_name}},\n    \"target_group\":{\n        \"and_flag\": False,\n        \"deleted_flag\": False,\n        \"filter_flag\": False,\n        \"management_rights_flag\": False,\n        \"not_flag\": False,\n        \"id\": {{targeting_group_id}}    \n    },\n    \"package_spec\" : {\n        \"source_id\" : {{package_details}},\n        \"parameters\": {{action_params}} \n    },\n    \"expire_seconds\":43200,\n    \"issue_seconds\":0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}{{ACTIONS_ENDPOINT}}",
+					"host": [
+						"{{BASE_URL}}{{ACTIONS_ENDPOINT}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_anonymous_group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        data = {\n            \"action_group\": {\"id\": {{action_group_id}}},\n            \"name\":{{package_name}},\n            \"target_group\":{\n                \"and_flag\": False,\n                \"deleted_flag\": False,\n                \"filter_flag\": False,\n                \"management_rights_flag\": False,\n                \"not_flag\": False,\n                \"id\": {{targeting_group_id}}\n            },\n            \"package_spec\" : {\n                \"source_id\" : {{package_details}},\n                \"parameters\": {{action_params}}\n            },\n            \"expire_seconds\":43200,\n            \"issue_seconds\":0\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}{{ACTIONS_ENDPOINT}}",
+					"host": [
+						"{{BASE_URL}}{{ACTIONS_ENDPOINT}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_action_group_id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}{{ACTION_GROUPS_ENDPOINT}}",
+					"host": [
+						"{{BASE_URL}}{{ACTION_GROUPS_ENDPOINT}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_package_details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}{{PACKAGES_ENDPOINT}}{{package}}",
+					"host": [
+						"{{BASE_URL}}{{PACKAGES_ENDPOINT}}{{package}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{API_TOKEN}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "{{API_KEY}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "sq_id",
+			"value": "29452"
+		},
+		{
+			"key": "sq_name",
+			"value": "My netstat Linux"
+		},
+		{
+			"key": "q_online",
+			"value": "get online from all machines",
+			"type": "string"
+		},
+		{
+			"key": "session_id",
+			"value": "{{body.data.id}}"
+		},
+		{
+			"key": "question_id",
+			"value": "0000",
+			"type": "string"
+		},
+		{
+			"key": "json_payload",
+			"value": "{{body.data[0]}}",
+			"type": "string"
+		},
+		{
+			"key": "reveal_filelist",
+			"value": "{{body.data.row.data}}",
+			"type": "string"
+		},
+		{
+			"key": "package_details",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "targeting_group_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "action_params",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "action_group_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "package_name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "action_group_name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "results_endpoint_id",
+			"value": "{{RESULTS_ENDPOINT}}{{body.data.id}}",
+			"type": "string"
+		},
+		{
+			"key": "sensor_name",
+			"value": "{{SENSOR_BY_NAME_ENDPOINT}}",
+			"type": "string"
+		},
+		{
+			"key": "action_params",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

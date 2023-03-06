@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "40623db2-1efb-4f27-b360-63f338a03b85",
+		"name": "Tanium - Interact",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18340491"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = pm.response.json();\r",
+							"console.log(jsonObject.data.session);\r",
+							"pm.globals.set(\"session_id\", jsonObject.data.session);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\" : \"{{username}}\",\r\n\"password\" : \"{{password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/session/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"session",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Parse Question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = pm.response.json();\r",
+							"console.log(jsonObject.data[0]);\r",
+							"pm.globals.set(\"question_json\", JSON.stringify(jsonObject.data[0]));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{session_id}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\" : \"{{question}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/parse_question",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"parse_question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ask Question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = pm.response.json();\r",
+							"console.log(jsonObject.data.id);\r",
+							"pm.globals.set(\"answer_id\", JSON.stringify(jsonObject.data.id));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{session_id}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{question_json}}"
+				},
+				"url": {
+					"raw": "{{url}}/questions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions"
+					]
+				},
+				"description": "Create a question on the Tanium Server. The question is immediately asked."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Answer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{session_id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/result_data/question/{{answer_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"result_data",
+						"question",
+						"{{answer_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://10.1.1.11/api/v2"
+		},
+		{
+			"key": "username",
+			"value": "user"
+		},
+		{
+			"key": "password",
+			"value": "passwordhere"
+		},
+		{
+			"key": "question",
+			"value": "Get computer name from all machines"
+		}
+	]
+}

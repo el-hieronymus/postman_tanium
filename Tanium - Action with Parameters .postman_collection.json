@@ -1,0 +1,911 @@
+{
+	"info": {
+		"_postman_id": "e5606a66-9c62-4aea-aa95-39b99748b51f",
+		"name": "Tanium - Action with Parameters ",
+		"description": "Block incomming trafic from a IP address or range of addresses.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18340491"
+	},
+	"item": [
+		{
+			"name": "1. Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"pm.globals.set(\"sessionid\", jsonData.data.session);",
+							"console.log(pm.globals.get(\"sessionid\"));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"username\" : \"{{username}}\",\r\n \"domain\" : \"{{domain}}\",\r\n \"password\": \"{{password}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v2/session/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"session",
+						"login"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Obtain a session ID\t"
+			},
+			"response": [
+				{
+					"name": "1. Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"username\" : \"{{username}}\",\r\n \"domain\" : \"{{domain}}\",\r\n \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/session/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "b105674e33a9ce42"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "97"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"session\": \"1-153992-7dfd5453511a6cc0dce02420e758dd25862b869ac8342aa3db31af0e009e5206\"\n    }\n}"
+				},
+				{
+					"name": "1. Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"username\" : \"Administrator\",\r\n \"domain\" : \"\",\r\n \"password\": \"P4ssw0rd\"\r\n}"
+						},
+						"url": {
+							"raw": "https://10.0.0.10/api/v2/session/login",
+							"protocol": "https",
+							"host": [
+								"10",
+								"0",
+								"0",
+								"10"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff",
+							"name": "X-Content-Type-Options",
+							"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1",
+							"name": "X-XSS-Protection",
+							"description": "Cross-site scripting (XSS) filter"
+						},
+						{
+							"key": "content-length",
+							"value": "98",
+							"name": "content-length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"name": "x-frame-options",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "ae3c0715c8d32d5d",
+							"name": "x-tanium-handler-uid",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"body": "{\"data\":{\"session\":\"1-3782901-4813a97bc4a5817d4c9d8b9855ee0f4e277b23e151ad1307119917f7919d99bd\"}}\n"
+				},
+				{
+					"name": "1. Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"username\" : \"{{username}}\",\r\n \"domain\" : \"{{domain}}\",\r\n \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/session/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "b105674e33a9ce42"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "97"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"session\": \"1-153861-2ef1ff6952169ddf704c0d1f4aefd9308bcd6eb939328d03d5d322ebdcbfffac\"\n    }\n}"
+				},
+				{
+					"name": "1. Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"username\" : \"{{username}}\",\r\n \"domain\" : \"{{domain}}\",\r\n \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/session/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "b105674e33a9ce42"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "97"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"session\": \"1-154024-e4dd94a3f26aa3ca1ea813a37690f8b0c084d3911b554732bdadd047f7b5f771\"\n    }\n}"
+				},
+				{
+					"name": "1. Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"username\" : \"{{username}}\",\r\n \"domain\" : \"{{domain}}\",\r\n \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/session/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "b105674e33a9ce42"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "97"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"session\": \"1-154015-a0ef9cb03bd112439f0d7f896e3f0517250cc99a922245b147ad267eabc68f42\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "2. Get Package By Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var package_id = jsonData.data.id;",
+							"pm.globals.set(\"package_id\", package_id);",
+							"var expire_seconds = jsonData.data.expire_seconds;",
+							"pm.globals.set(\"expire_seconds\", expire_seconds);",
+							"console.log(expire_seconds);",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{sessionid}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/v2/packages/378",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"packages",
+						"378"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Action Group",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var action_group_id = jsonData.data.groups[0].id;",
+							"pm.globals.set(\"action_group_id\", action_group_id);",
+							"console.log(action_group_id);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{sessionid}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/v2/action_groups/by-name/RestTestWindows",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"action_groups",
+						"by-name",
+						"RestTestWindows"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Deploy Action with Parameter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{sessionid}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"action_group\": {\"id\": {{action_group_id}}},\n \"name\":\"{{tag}}\",\n \"target_group\" : {\n \t\"and_flag\": true,\n    \"deleted_flag\": false,\n    \"not_flag\": false,\n \t\"filters\" : [\n \t\t{\n \t\t\t\"sensor\":{\n \t\t\t\t\"name\" : \"{{filter_name}}\"\n \t\t\t},\n \t\t\t\"operator\" : \"{{filter_operator}}\",\n \t\t\t\"value\" : \"{{filter_value}}\"\n \t\t}\n \t]\n },\n \"package_spec\" : {\n   \"source_id\" : {{package_id}},\n   \"parameters\": [\n\t   {\n\t      \"key\" : \"$1\",\n\t      \"value\" : \"{{tag}}\"\n\t   }\n\t]\n  },\n \"expire_seconds\":{{expire_seconds}}\n}\n"
+				},
+				"url": {
+					"raw": "{{url}}/api/v2/actions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"actions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "5. Deploy Action with Parameter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session",
+								"value": "{{sessionid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"action_group\": {\"id\": {{action_group_id}}},\n \"name\":\"{{tag}}\",\n \"target_group\" : {\n \t\"filters\" : [\n \t\t{\n \t\t\t\"sensor\":{\n \t\t\t\t\"name\" : \"{{filter_name}}\"\n \t\t\t},\n \t\t\t\"operator\" : \"{{filter_operator}}\",\n \t\t\t\"value\" : \"{{filter_value}}\"\n \t\t}\n \t]\n },\n \"package_spec\" : {\n   \"source_id\" : {{package_id}},\n   \"parameters\": [\n\t   {\n\t      \"key\" : \"$1\",\n\t      \"value\" : \"{{tag}}\"\n\t   }\n\t]\n  },\n \"expire_seconds\":{{expire_seconds}}\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/actions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"actions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "d7cf7cad6fb072bd"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"action_group\": {\n            \"id\": 74,\n            \"name\": \"Windows\"\n        },\n        \"approver\": {\n            \"id\": 1,\n            \"name\": \"tanium\"\n        },\n        \"comment\": \"\",\n        \"creation_time\": \"2019-04-27T14:27:33Z\",\n        \"distribute_seconds\": 0,\n        \"expiration_time\": \"2001-01-01T00:11:00Z\",\n        \"expire_seconds\": 660,\n        \"history_saved_question\": {\n            \"id\": 0\n        },\n        \"id\": 10719,\n        \"name\": \"ExampleTag\",\n        \"package_spec\": {\n            \"available_time\": \"2001-01-01T00:00:00Z\",\n            \"command\": \"cmd.exe /c cscript.exe //E:VBScript //T:60 add-tags.vbs \\\"ExampleTag\\\"\",\n            \"command_timeout\": 600,\n            \"content_set\": {\n                \"id\": 15,\n                \"name\": \"\"\n            },\n            \"creation_time\": \"2001-01-01T00:00:00Z\",\n            \"deleted_flag\": false,\n            \"display_name\": \"\",\n            \"expire_seconds\": 3600,\n            \"files\": [\n                {\n                    \"bytes_downloaded\": 0,\n                    \"bytes_total\": 17198,\n                    \"cache_status\": \"\",\n                    \"download_seconds\": 0,\n                    \"file_status\": [\n                        {\n                            \"bytes_downloaded\": 0,\n                            \"bytes_total\": 0,\n                            \"cache_message\": \"\",\n                            \"cache_status\": \"Processing\",\n                            \"server_id\": 1,\n                            \"server_name\": \"tanosai1.rishilab.local:17472\",\n                            \"status\": 0\n                        }\n                    ],\n                    \"hash\": \"a9acba7a94d5d7113f677f6426ddc4b39a97943e5559dad30d4fbe32bb3d62dc\",\n                    \"id\": 84,\n                    \"name\": \"add-tags.vbs\",\n                    \"size\": 17198,\n                    \"source\": \"https://content.tanium.com/files/published/IC_Tags/2019-03-07_12-37-31_7.1.10.0017-g83437c1a/custom_tagging_-_add_tags/add-tags.vbs\",\n                    \"status\": 0\n                }\n            ],\n            \"hidden_flag\": true,\n            \"id\": 394,\n            \"last_modified_by\": \"\",\n            \"last_update\": \"2019-04-27T14:27:33Z\",\n            \"mod_user\": {\n                \"display_name\": \"\",\n                \"domain\": \"\",\n                \"id\": 0,\n                \"name\": \"\"\n            },\n            \"modification_time\": \"2001-01-01T00:00:00Z\",\n            \"name\": \"Custom Tagging - Add Tags\",\n            \"parameters\": [\n                {\n                    \"key\": \"$1\",\n                    \"type\": 0,\n                    \"value\": \"ExampleTag\"\n                }\n            ],\n            \"process_group_flag\": false,\n            \"skip_lock_flag\": false,\n            \"source_hash\": \"8a44af7f1e69c1aa9c0d0b15cc3b8d90d78e5e0d7f7d4f7d690bde085770c57b\",\n            \"source_hash_changed_flag\": false,\n            \"source_id\": 62,\n            \"verify_expire_seconds\": 3600,\n            \"verify_group\": {\n                \"id\": 0\n            },\n            \"verify_group_id\": 0\n        },\n        \"saved_action\": {\n            \"id\": 113\n        },\n        \"skip_lock_flag\": false,\n        \"start_time\": \"2001-01-01T00:00:00Z\",\n        \"status\": \"Pending\",\n        \"stopped_flag\": false,\n        \"target_group\": {\n            \"id\": 1346,\n            \"name\": \"Default\"\n        },\n        \"user\": {\n            \"deleted_flag\": false,\n            \"display_name\": \"\",\n            \"domain\": \"\",\n            \"effective_group_id\": 0,\n            \"external_flag\": 0,\n            \"group_id\": 0,\n            \"id\": 1,\n            \"last_login\": \"2019-04-27T14:27:20Z\",\n            \"locked_out\": 0,\n            \"name\": \"tanium\"\n        }\n    }\n}"
+				},
+				{
+					"name": "5. Deploy Action with Parameter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session",
+								"value": "{{sessionid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"action_group\": {\"id\": {{action_group_id}}},\n \"name\":\"{{tag}}\",\n \"target_group\" : {\n \t\"filters\" : [\n \t\t{\n \t\t\t\"sensor\":{\n \t\t\t\t\"name\" : \"{{filter_name}}\"\n \t\t\t},\n \t\t\t\"operator\" : \"{{filter_operator}}\",\n \t\t\t\"value\" : \"{{filter_value}}\"\n \t\t}\n \t]\n },\n \"package_spec\" : {\n   \"source_id\" : {{package_id}},\n   \"parameters\": [\n\t   {\n\t      \"key\" : \"$1\",\n\t      \"value\" : \"{{tag}}\"\n\t   }\n\t]\n  },\n \"expire_seconds\":{{expire_seconds}}\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/actions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"actions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "d7cf7cad6fb072bd"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"action_group\": {\n            \"id\": 74,\n            \"name\": \"Windows\"\n        },\n        \"approver\": {\n            \"id\": 1,\n            \"name\": \"tanium\"\n        },\n        \"comment\": \"\",\n        \"creation_time\": \"2019-04-27T14:27:33Z\",\n        \"distribute_seconds\": 0,\n        \"expiration_time\": \"2001-01-01T00:11:00Z\",\n        \"expire_seconds\": 660,\n        \"history_saved_question\": {\n            \"id\": 0\n        },\n        \"id\": 10719,\n        \"name\": \"ExampleTag\",\n        \"package_spec\": {\n            \"available_time\": \"2001-01-01T00:00:00Z\",\n            \"command\": \"cmd.exe /c cscript.exe //E:VBScript //T:60 add-tags.vbs \\\"ExampleTag\\\"\",\n            \"command_timeout\": 600,\n            \"content_set\": {\n                \"id\": 15,\n                \"name\": \"\"\n            },\n            \"creation_time\": \"2001-01-01T00:00:00Z\",\n            \"deleted_flag\": false,\n            \"display_name\": \"\",\n            \"expire_seconds\": 3600,\n            \"files\": [\n                {\n                    \"bytes_downloaded\": 0,\n                    \"bytes_total\": 17198,\n                    \"cache_status\": \"\",\n                    \"download_seconds\": 0,\n                    \"file_status\": [\n                        {\n                            \"bytes_downloaded\": 0,\n                            \"bytes_total\": 0,\n                            \"cache_message\": \"\",\n                            \"cache_status\": \"Processing\",\n                            \"server_id\": 1,\n                            \"server_name\": \"tanosai1.rishilab.local:17472\",\n                            \"status\": 0\n                        }\n                    ],\n                    \"hash\": \"a9acba7a94d5d7113f677f6426ddc4b39a97943e5559dad30d4fbe32bb3d62dc\",\n                    \"id\": 84,\n                    \"name\": \"add-tags.vbs\",\n                    \"size\": 17198,\n                    \"source\": \"https://content.tanium.com/files/published/IC_Tags/2019-03-07_12-37-31_7.1.10.0017-g83437c1a/custom_tagging_-_add_tags/add-tags.vbs\",\n                    \"status\": 0\n                }\n            ],\n            \"hidden_flag\": true,\n            \"id\": 394,\n            \"last_modified_by\": \"\",\n            \"last_update\": \"2019-04-27T14:27:33Z\",\n            \"mod_user\": {\n                \"display_name\": \"\",\n                \"domain\": \"\",\n                \"id\": 0,\n                \"name\": \"\"\n            },\n            \"modification_time\": \"2001-01-01T00:00:00Z\",\n            \"name\": \"Custom Tagging - Add Tags\",\n            \"parameters\": [\n                {\n                    \"key\": \"$1\",\n                    \"type\": 0,\n                    \"value\": \"ExampleTag\"\n                }\n            ],\n            \"process_group_flag\": false,\n            \"skip_lock_flag\": false,\n            \"source_hash\": \"8a44af7f1e69c1aa9c0d0b15cc3b8d90d78e5e0d7f7d4f7d690bde085770c57b\",\n            \"source_hash_changed_flag\": false,\n            \"source_id\": 62,\n            \"verify_expire_seconds\": 3600,\n            \"verify_group\": {\n                \"id\": 0\n            },\n            \"verify_group_id\": 0\n        },\n        \"saved_action\": {\n            \"id\": 113\n        },\n        \"skip_lock_flag\": false,\n        \"start_time\": \"2001-01-01T00:00:00Z\",\n        \"status\": \"Pending\",\n        \"stopped_flag\": false,\n        \"target_group\": {\n            \"id\": 1346,\n            \"name\": \"Default\"\n        },\n        \"user\": {\n            \"deleted_flag\": false,\n            \"display_name\": \"\",\n            \"domain\": \"\",\n            \"effective_group_id\": 0,\n            \"external_flag\": 0,\n            \"group_id\": 0,\n            \"id\": 1,\n            \"last_login\": \"2019-04-27T14:27:20Z\",\n            \"locked_out\": 0,\n            \"name\": \"tanium\"\n        }\n    }\n}"
+				},
+				{
+					"name": "5. Deploy Action with Parameter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session",
+								"value": "{{sessionid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"action_group\": {\"id\": {{action_group_id}}},\n \"name\":\"{{tag}}\",\n \"target_group\" : {\n \t\"filters\" : [\n \t\t{\n \t\t\t\"sensor\":{\n \t\t\t\t\"name\" : \"{{filter_name}}\"\n \t\t\t},\n \t\t\t\"operator\" : \"{{filter_operator}}\",\n \t\t\t\"value\" : \"{{filter_value}}\"\n \t\t}\n \t]\n },\n \"package_spec\" : {\n   \"source_id\" : {{package_id}},\n   \"parameters\": [\n\t   {\n\t      \"key\" : \"$1\",\n\t      \"value\" : \"{{tag}}\"\n\t   }\n\t]\n  },\n \"expire_seconds\":{{expire_seconds}}\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/actions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"actions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "d7cf7cad6fb072bd"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"action_group\": {\n            \"id\": 74,\n            \"name\": \"Windows\"\n        },\n        \"approver\": {\n            \"id\": 1,\n            \"name\": \"tanium\"\n        },\n        \"comment\": \"\",\n        \"creation_time\": \"2019-04-27T14:31:46Z\",\n        \"distribute_seconds\": 0,\n        \"expiration_time\": \"2001-01-01T00:11:00Z\",\n        \"expire_seconds\": 660,\n        \"history_saved_question\": {\n            \"id\": 0\n        },\n        \"id\": 10730,\n        \"name\": \"ExampleTag\",\n        \"package_spec\": {\n            \"available_time\": \"2001-01-01T00:00:00Z\",\n            \"command\": \"cmd.exe /c cscript.exe //E:VBScript //T:60 add-tags.vbs \\\"ExampleTag\\\"\",\n            \"command_timeout\": 600,\n            \"content_set\": {\n                \"id\": 15,\n                \"name\": \"\"\n            },\n            \"creation_time\": \"2001-01-01T00:00:00Z\",\n            \"deleted_flag\": false,\n            \"display_name\": \"\",\n            \"expire_seconds\": 3600,\n            \"files\": [\n                {\n                    \"bytes_downloaded\": 0,\n                    \"bytes_total\": 17198,\n                    \"cache_status\": \"\",\n                    \"download_seconds\": 0,\n                    \"file_status\": [\n                        {\n                            \"bytes_downloaded\": 0,\n                            \"bytes_total\": 0,\n                            \"cache_message\": \"\",\n                            \"cache_status\": \"Processing\",\n                            \"server_id\": 1,\n                            \"server_name\": \"tanosai1.rishilab.local:17472\",\n                            \"status\": 0\n                        }\n                    ],\n                    \"hash\": \"a9acba7a94d5d7113f677f6426ddc4b39a97943e5559dad30d4fbe32bb3d62dc\",\n                    \"id\": 84,\n                    \"name\": \"add-tags.vbs\",\n                    \"size\": 17198,\n                    \"source\": \"https://content.tanium.com/files/published/IC_Tags/2019-03-07_12-37-31_7.1.10.0017-g83437c1a/custom_tagging_-_add_tags/add-tags.vbs\",\n                    \"status\": 0\n                }\n            ],\n            \"hidden_flag\": true,\n            \"id\": 397,\n            \"last_modified_by\": \"\",\n            \"last_update\": \"2019-04-27T14:31:46Z\",\n            \"mod_user\": {\n                \"display_name\": \"\",\n                \"domain\": \"\",\n                \"id\": 0,\n                \"name\": \"\"\n            },\n            \"modification_time\": \"2001-01-01T00:00:00Z\",\n            \"name\": \"Custom Tagging - Add Tags\",\n            \"parameters\": [\n                {\n                    \"key\": \"$1\",\n                    \"type\": 0,\n                    \"value\": \"ExampleTag\"\n                }\n            ],\n            \"process_group_flag\": false,\n            \"skip_lock_flag\": false,\n            \"source_hash\": \"8a44af7f1e69c1aa9c0d0b15cc3b8d90d78e5e0d7f7d4f7d690bde085770c57b\",\n            \"source_hash_changed_flag\": false,\n            \"source_id\": 62,\n            \"verify_expire_seconds\": 3600,\n            \"verify_group\": {\n                \"id\": 0\n            },\n            \"verify_group_id\": 0\n        },\n        \"saved_action\": {\n            \"id\": 114\n        },\n        \"skip_lock_flag\": false,\n        \"start_time\": \"2001-01-01T00:00:00Z\",\n        \"status\": \"Pending\",\n        \"stopped_flag\": false,\n        \"target_group\": {\n            \"id\": 1349,\n            \"name\": \"Default\"\n        },\n        \"user\": {\n            \"deleted_flag\": false,\n            \"display_name\": \"\",\n            \"domain\": \"\",\n            \"effective_group_id\": 0,\n            \"external_flag\": 0,\n            \"group_id\": 0,\n            \"id\": 1,\n            \"last_login\": \"2019-04-27T14:26:34Z\",\n            \"locked_out\": 0,\n            \"name\": \"tanium\"\n        }\n    }\n}"
+				},
+				{
+					"name": "5. Deploy Action with Parameter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session",
+								"value": "{{sessionid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"action_group\": {\"id\": {{action_group_id}}},\n \"name\":\"{{tag}}\",\n \"target_group\" : {\n \t\"filters\" : [\n \t\t{\n \t\t\t\"sensor\":{\n \t\t\t\t\"name\":\"{{filter_name}}\",\n \t\t\t\t\"operator\":\"{{filter_operator}}\",\n \t\t\t\t\"value\":\"{{filter_value}}\"\n \t\t\t}\n \t\t}\n \t]\n },\n \"package_spec\" : {\n   \"source_id\" : {{package_id}},\n   \"parameters\": [\n\t   {\n\t      \"key\" : \"$1\",\n\t      \"value\" : \"{{tag}}\"\n\t   }\n\t]\n  },\n \"expire_seconds\":{{expire_seconds}}\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/actions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"actions"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1"
+						},
+						{
+							"key": "x-tanium-handler-uid",
+							"value": "6f882362e07efc1c"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "content-length",
+							"value": "128"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"text\": \"400 Bad Request\\n\\nREST Processing Exception: InvalidFilterOperator: The filter operator provided is unsupported. \\n\"\n}"
+				}
+			]
+		},
+		{
+			"name": "5. Check Status of Action",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query_text\": \"Get action status contains \"{{actionid}}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v2/questions?session={{sessionid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "session",
+							"value": "{{sessionid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Get Question Response",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "session",
+						"value": "{{sessionid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/v2/result_data/question/{{question_resp_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"result_data",
+						"question",
+						"{{question_resp_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": "user"
+		},
+		{
+			"key": "domain",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": "password here"
+		},
+		{
+			"key": "url",
+			"value": "https://10.1.1.11"
+		},
+		{
+			"key": "action_group",
+			"value": "Cherwell"
+		},
+		{
+			"key": "computer_regex",
+			"value": "jump01.*"
+		},
+		{
+			"key": "package_name",
+			"value": "Cherwell - Kill Process"
+		},
+		{
+			"key": "parameter_1",
+			"value": "239c6a38de34b2cc26afbc41adf3a11d"
+		}
+	]
+}
