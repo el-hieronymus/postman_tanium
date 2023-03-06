@@ -1,9 +1,7 @@
 {
 	"info": {
-		"_postman_id": "9d97c73e-d096-40a3-a98e-4cd2477d9449",
 		"name": "Test_TaniumServer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18340491"
 	},
 	"item": [
 		{
